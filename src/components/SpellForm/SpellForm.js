@@ -3,39 +3,45 @@ import react, {useState} from 'react'
 
 const SpellForm = () => {
 
+    //Name
     const [UserInputName, setName] = useState('');
     const UpdateNameHandler = (event) => {
         setName(event.target.value)
         console.log(event.target.value)
     } 
 
+    //Casting Time
     const [UserInputCastingTime, setCastingTime] = useState('');
     const UpdateCastingTimeHandler = (event) => {
-        setName(event.target.value)
+        setCastingTime(event.target.value)
         console.log(event.target.value)
     } 
 
+    //Range
     const [UserInputRange, setRange] = useState('');
     const UpdateRangeHandler = (event) => {
-        setName(event.target.value)
+        setRange(event.target.value)
         console.log(event.target.value)
     } 
 
+    //Components
     const [UserInputComponents, setComponents] = useState('');
     const UpdateComponentsHandler = (event) => {
-        setName(event.target.value)
+        setComponents(event.target.value)
         console.log(event.target.value)
     } 
 
-    const [UserInputNameDuration, setDuration] = useState('');
+    //Duration
+    const [UserInputDuration, setDuration] = useState('');
     const UpdateDurationHandler = (event) => {
-        setName(event.target.value)
+        setDuration(event.target.value)
         console.log(event.target.value)
     } 
 
+    //Description
     const [UserInputNameDescription, setDescription] = useState('');
     const UpdateDescriptionHandler = (event) => {
-        setName(event.target.value)
+        setDescription(event.target.value)
         console.log(event.target.value)
     } 
 

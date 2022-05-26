@@ -1,0 +1,14 @@
+td {
+    color: blue;
+    border: 3px solid black;
+    background-color: lightgrey;
+}
+
+th {
+    color: aqua;
+}
+
+tr {
+    text-align: center;
+    border: 3px solid black;
+}

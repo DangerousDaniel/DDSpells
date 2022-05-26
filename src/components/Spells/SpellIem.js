@@ -1,6 +1,5 @@
 import './Spelltem.css'
 
-
 const DeleteSpells = () => {
     console.log('I am the delete button')
     alert('I am a Popup!!!')

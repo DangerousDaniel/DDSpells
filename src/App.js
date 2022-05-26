@@ -1,6 +1,6 @@
+import SpellForm from './components/SpellForm/SpellForm'
 import SpellItem from './components/Spells/SpellIem'
 import SpellRows from './components/Spells/SpellRows'
-
 
 const App = () => {
 
@@ -46,6 +46,7 @@ const App = () => {
 
   return (
     <div>
+      <SpellForm></SpellForm>
       <table>
         <SpellRows></SpellRows>
         {/* Get all ddSpells from a objects */}

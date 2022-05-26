@@ -2,7 +2,7 @@ import SpellItem from './components/Spells/SpellIem'
 import SpellRows from './components/Spells/SpellRows'
 
 
-function App() {
+const App = () => {
 
   const ddSpells = [
     {

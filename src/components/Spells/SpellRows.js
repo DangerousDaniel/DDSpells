@@ -1,6 +1,6 @@
 import './SpellRows.css'
 
-function SpellRows(){
+const SpellRows = () => {
     return(
         <tr>
             <th>Name</th>

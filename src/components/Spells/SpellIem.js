@@ -1,6 +1,12 @@
 import './Spelltem.css'
 
-function SpellItem(props){
+
+const DeleteSpells = () => {
+    console.log('I am the delete button')
+    alert('I am a Popup!!!')
+}
+
+const SpellItem = (props) => {
     return(
         <tr>
                 <td className='SpellTH'>{props.name}</td>
@@ -8,7 +14,7 @@ function SpellItem(props){
                 <td>{props.range}</td>
                 <td>{props.components}</td>
                 <td>{props.duration}</td>
-                <td><button>Delete</button></td>
+                <td><button onClick={DeleteSpells}>Delete</button></td>
         </tr>
     );
 }

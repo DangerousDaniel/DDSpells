@@ -1,7 +1,7 @@
 import './SpellForm.css'
 import react, {useState} from 'react'
 
-const SpellForm = () => {
+const SpellForm = (props) => {
 
     //User Input Variables 
     const [UserInputName, setName] = useState('');
@@ -9,42 +9,42 @@ const SpellForm = () => {
     const [UserInputRange, setRange] = useState('');
     const [UserInputComponents, setComponents] = useState('');
     const [UserInputDuration, setDuration] = useState('');
-    const [UserInputNameDescription, setDescription] = useState('');
+    const [UserInputDescription, setDescription] = useState('');
     
     //Set Name from User Input
     const UpdateNameHandler = (event) => {
         setName(event.target.value)
-        console.log(event.target.value)
+
     } 
 
     //Set Casting Time from User Input
     const UpdateCastingTimeHandler = (event) => {
         setCastingTime(event.target.value)
-        console.log(event.target.value)
+
     } 
 
     //Set Range from User Input
     const UpdateRangeHandler = (event) => {
         setRange(event.target.value)
-        console.log(event.target.value)
+
     } 
 
     //Set Components from User Input
     const UpdateComponentsHandler = (event) => {
         setComponents(event.target.value)
-        console.log(event.target.value)
+
     } 
 
     //Set Duration from User Input
     const UpdateDurationHandler = (event) => {
         setDuration(event.target.value)
-        console.log(event.target.value)
+
     } 
 
     //Set Description from User Input
     const UpdateDescriptionHandler = (event) => {
         setDescription(event.target.value)
-        console.log(event.target.value)
+
     } 
 
     //Submit the Data from User Inputs
@@ -57,46 +57,73 @@ const SpellForm = () => {
             range: UserInputRange,
             components: UserInputComponents,
             duration: UserInputDuration,
-            description: UserInputNameDescription
+            description: UserInputDescription
         }
 
+        onSaveSpellData(SpellDate)
         console.log(SpellDate)
+
+        //Clear Data 
+        setName('')
+        setCastingTime('')
+        setRange('')
+        setComponents('')
+        setDuration('')
+        setDescription('')
+    }
+
+    //Save Data
+    const saveSpellDataHandler = (userInputSpellData) => {
+        
+        const spellData = {
+            ...userInputSpellData,
+            id: Math.random()
+        }
+
+        props.onAddSpell(spellData)
+        console.log(spellData)
+        
+    }
+
+    const onSaveSpellData = (spellData) => {
+        console.log(spellData)
+        saveSpellDataHandler(spellData);
     }
 
     //Render HTML Form
     return (
-        <form onSubmit={submitDataHandler}>
+        <form onSubmit={submitDataHandler} >
             <div>
                 <label>Name: </label>
-                <input type='text' onChange={UpdateNameHandler}></input>
+                <input type='text' value={UserInputName} onChange={UpdateNameHandler}></input>
                 <br></br>
                 <br></br>
             </div>
 
             <div>
                 <label>CastingTime: </label>
-                <input type='text' onChange={UpdateCastingTimeHandler}></input>
+                <input type='text' value={UserInputCastingTime} onChange={UpdateCastingTimeHandler}></input>
                 <br></br>
                 <br></br>
             </div>
 
                 <label>Range: </label>
             <div>
-                <input type='text' onChange={UpdateRangeHandler}></input>
+                <input type='text' value={UserInputRange} onChange={UpdateRangeHandler}></input>
                 <br></br>
                 <br></br>
             </div>
 
             <div>
                 <label>Components: </label>
-                <input type='text' onChange={UpdateComponentsHandler}></input>
+                <input type='text' value={UserInputComponents} onChange={UpdateComponentsHandler}></input>
                 <br></br>
                 <br></br>
             </div>
 
             <div>
                 <label>Duration: </label>
-                <input type='text' onChange={UpdateDurationHandler}></input>
+                <input type='text' value={UserInputDuration} onChange={UpdateDurationHandler}></input>
                 <br></br>
                 <br></br>
             </div>
@@ -104,7 +131,7 @@ const SpellForm = () => {
             <div>
                 <label>Description: </label>
                 <br></br>
-                <input className="textBox" type='text' onChange={UpdateDescriptionHandler}></input>
+                <input className="textBox" value={UserInputDescription} type='text' onChange={UpdateDescriptionHandler}></input>
                 <br></br>
             </div>
 

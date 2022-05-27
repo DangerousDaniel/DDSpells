@@ -3,6 +3,7 @@ import react, {useState} from 'react'
 
 const SpellForm = (props) => {
 
+    //#region User Input for Create a Spell
     //User Input Variables 
     const [UserInputName, setName] = useState('');
     const [UserInputCastingTime, setCastingTime] = useState('');
@@ -46,6 +47,7 @@ const SpellForm = (props) => {
         setDescription(event.target.value)
 
     } 
+    //#endregion
 
     //Submit the Data from User Inputs
     const submitDataHandler = (event) => {
@@ -72,7 +74,7 @@ const SpellForm = (props) => {
         setDescription('')
     }
 
-    //Save Data
+    //#region Save Data
     const saveSpellDataHandler = (userInputSpellData) => {
         
         const spellData = {
@@ -89,6 +91,7 @@ const SpellForm = (props) => {
         console.log(spellData)
         saveSpellDataHandler(spellData);
     }
+    //#endregion
 
     //Render HTML Form
     return (

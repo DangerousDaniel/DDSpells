@@ -3,50 +3,69 @@ import react, {useState} from 'react'
 
 const SpellForm = () => {
 
-    //Name
+    //User Input Variables 
     const [UserInputName, setName] = useState('');
+    const [UserInputCastingTime, setCastingTime] = useState('');
+    const [UserInputRange, setRange] = useState('');
+    const [UserInputComponents, setComponents] = useState('');
+    const [UserInputDuration, setDuration] = useState('');
+    const [UserInputNameDescription, setDescription] = useState('');
+    
+    //Set Name from User Input
     const UpdateNameHandler = (event) => {
         setName(event.target.value)
         console.log(event.target.value)
     } 
 
-    //Casting Time
-    const [UserInputCastingTime, setCastingTime] = useState('');
+    //Set Casting Time from User Input
     const UpdateCastingTimeHandler = (event) => {
         setCastingTime(event.target.value)
         console.log(event.target.value)
     } 
 
-    //Range
-    const [UserInputRange, setRange] = useState('');
+    //Set Range from User Input
     const UpdateRangeHandler = (event) => {
         setRange(event.target.value)
         console.log(event.target.value)
     } 
 
-    //Components
-    const [UserInputComponents, setComponents] = useState('');
+    //Set Components from User Input
     const UpdateComponentsHandler = (event) => {
         setComponents(event.target.value)
         console.log(event.target.value)
     } 
 
-    //Duration
-    const [UserInputDuration, setDuration] = useState('');
+    //Set Duration from User Input
     const UpdateDurationHandler = (event) => {
         setDuration(event.target.value)
         console.log(event.target.value)
     } 
 
-    //Description
-    const [UserInputNameDescription, setDescription] = useState('');
+    //Set Description from User Input
     const UpdateDescriptionHandler = (event) => {
         setDescription(event.target.value)
         console.log(event.target.value)
     } 
 
+    //Submit the Data from User Inputs
+    const submitDataHandler = (event) => {
+        event.preventDefault()
+
+        const SpellDate = {
+            name: UserInputName,
+            castingTime: UserInputCastingTime,
+            range: UserInputRange,
+            components: UserInputComponents,
+            duration: UserInputDuration,
+            description: UserInputNameDescription
+        }
+
+        console.log(SpellDate)
+    }
+
+    //Render HTML Form
     return (
-        <form>
+        <form onSubmit={submitDataHandler}>
             <div>
                 <label>Name: </label>
                 <input type='text' onChange={UpdateNameHandler}></input>
@@ -61,9 +80,9 @@ const SpellForm = () => {
                 <br></br>
             </div>
 
-            <div>
                 <label>Range: </label>
-                <input type='nuber' onChange={UpdateRangeHandler}></input>
+            <div>
+                <input type='text' onChange={UpdateRangeHandler}></input>
                 <br></br>
                 <br></br>
             </div>

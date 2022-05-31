@@ -1,11 +1,32 @@
 import './Spelltem.css'
 
-const DeleteSpells = () => {
-    console.log('I am the delete button')
-    alert('I am a Popup!!!')
-}
+
 
 const SpellItem = (props) => {
+    const DeleteSpells = async (id) => {
+
+        console.log(id);
+    
+        //delete from database
+        let getDelete = await fetch("https://s6u6rjds0m.execute-api.us-east-1.amazonaws.com/dev/spells/delete", 
+        {
+            method: 'POST',
+            body: JSON.stringify({
+             id: id
+            }),
+            headers: {
+                'Content-Type': 'application/json'
+              }
+        });
+        //Update Table
+        if(props.updateTable){
+            console.log("Update Table")
+            await props.updateTable();
+        } else {
+            alert("Table Needs to Update")
+        }
+    }
+
     return(
         <tr>
                 <td className='SpellTH'>{props.name}</td>
@@ -13,7 +34,7 @@ const SpellItem = (props) => {
                 <td>{props.spell_range}</td>
                 <td>{props.components}</td>
                 <td>{props.duration}</td>
-                <td><button onClick={DeleteSpells}>Delete</button></td>
+                <td><button onClick={()=> {DeleteSpells(props.id)}}>Delete</button></td>
         </tr>
     );
 }

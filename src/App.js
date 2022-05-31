@@ -1,8 +1,7 @@
-import react, {useState, useEffect} from 'react'
+import react, {useState, useEffect, useContext} from 'react'
 import SpellForm from './components/SpellForm/SpellForm'
 import SpellItem from './components/Spells/SpellIem'
 import SpellRows from './components/Spells/SpellRows'
-
 const testData_spellData = [
   {
     "name": "Acid Arrow",
@@ -47,12 +46,13 @@ const App = () => {
   useEffect(() => {
     const Test = async () => {
       var _fetchSpells = await GetSpells();
-      console.log(_fetchSpells);
-      setSpell(_fetchSpells);
+      //console.log(_fetchSpells);
+      //setSpell(_fetchSpells);
     }
 
     Test();
   }, [])
+
   useEffect(() => {
     console.log(spells);
   }, [spells]);
@@ -68,6 +68,7 @@ const App = () => {
       })
     
       let json = await request.json();
+      setSpell(json)
       resolve(json)
     });
   }
@@ -103,12 +104,14 @@ const App = () => {
         {spells.map((s) => {
           return(
             <SpellItem
+            updateTable={GetSpells}
             key={s.id}
             name={s.name}
             castingTime={s.castingTime}
             spell_range={s.spell_range}
             components={s.components}
             duration={s.duration}
+            id={s.id}
             ></SpellItem>
           );
         })}       

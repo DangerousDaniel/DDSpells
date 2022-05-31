@@ -43,7 +43,23 @@ const testData_spellData = [
 const App = () => {
 
   const [spells, setSpell] = useState(testData_spellData)
+  useEffect(() => {
+    const Test = async () => {
+      console.log("TEST");
+      var request = await fetch("https://s6u6rjds0m.execute-api.us-east-1.amazonaws.com/dev/test",
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
 
+      var json = await request.json();
+      console.log(json);
+    }
+
+    Test();
+  }, [])
   useEffect(() => {
     console.log(spells);
   }, [spells]);

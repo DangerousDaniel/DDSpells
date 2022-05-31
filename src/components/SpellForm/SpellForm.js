@@ -12,10 +12,13 @@ const SpellForm = (props) => {
     const [UserInputDuration, setDuration] = useState('');
     const [UserInputDescription, setDescription] = useState('');
 
+    //valid Boolean Flag
     const [isValid, setValid] = useState(false)
         
     //Set Name from User Input
     const UpdateNameHandler = (event) => {
+
+        //Input valid
         if (event.target.value.trim().length > 0){
             setValid(true)
         }
@@ -27,45 +30,49 @@ const SpellForm = (props) => {
     //Set Casting Time from User Input
     const UpdateCastingTimeHandler = (event) => {
 
+        //Input valid
         if (event.target.value.trim().length > 0){
             setValid(true)
         }
 
+        //Set Data
         setCastingTime(event.target.value)
-
     } 
 
     //Set Range from User Input
     const UpdateRangeHandler = (event) => {
 
+        //Input valid
         if (event.target.value.trim().length > 0){
             setValid(true)
         }
 
+        //Set Data
         setRange(event.target.value)
-
     } 
 
     //Set Components from User Input
     const UpdateComponentsHandler = (event) => {
 
+        //Input valid
         if (event.target.value.trim().length > 0){
             setValid(true)
         }
 
+        //Set Data
         setComponents(event.target.value)
-
     } 
 
     //Set Duration from User Input
     const UpdateDurationHandler = (event) => {
 
+        //Input data valid
         if (event.target.value.trim().length > 0){
             setValid(true)
         }
 
+        //Set data
         setDuration(event.target.value)
-
     } 
 
     //Set Description from User Input
@@ -76,7 +83,6 @@ const SpellForm = (props) => {
         }
 
         setDescription(event.target.value)
-
     } 
     //#endregion
 
@@ -84,6 +90,7 @@ const SpellForm = (props) => {
     const submitDataHandler = (event) => {
         event.preventDefault()
 
+        //valid Data (if the string is empty)
         if (UserInputName.trim().length === 0 || 
         UserInputCastingTime.trim().length === 0 || 
         UserInputRange.trim().length === 0 || 
@@ -94,6 +101,7 @@ const SpellForm = (props) => {
             return
         }
 
+        //Create new Data
         const SpellDate = {
             name: UserInputName,
             castingTime: UserInputCastingTime,
@@ -103,6 +111,7 @@ const SpellForm = (props) => {
             description: UserInputDescription
         }
 
+        //Save Data
         onSaveSpellData(SpellDate)
         console.log(SpellDate)
 
@@ -115,7 +124,13 @@ const SpellForm = (props) => {
         setDescription('')
     }
 
-    //#region Save Data
+    //Save Data
+    const onSaveSpellData = (spellData) => {
+        console.log(spellData)
+        saveSpellDataHandler(spellData);
+    }
+
+    //Add Data
     const saveSpellDataHandler = (userInputSpellData) => {
         
         const spellData = {
@@ -127,12 +142,6 @@ const SpellForm = (props) => {
         console.log(spellData)
         
     }
-
-    const onSaveSpellData = (spellData) => {
-        console.log(spellData)
-        saveSpellDataHandler(spellData);
-    }
-    //#endregion
 
     //Render HTML Form
     return (

@@ -105,7 +105,7 @@ const SpellForm = (props) => {
         const SpellDate = {
             name: UserInputName,
             castingTime: UserInputCastingTime,
-            range: UserInputRange,
+            spell_range: UserInputRange,
             components: UserInputComponents,
             duration: UserInputDuration,
             description: UserInputDescription

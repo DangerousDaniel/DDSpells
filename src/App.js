@@ -43,19 +43,12 @@ const testData_spellData = [
 const App = () => {
 
   const [spells, setSpell] = useState(testData_spellData)
+
   useEffect(() => {
     const Test = async () => {
-      console.log("TEST");
-      var request = await fetch("https://s6u6rjds0m.execute-api.us-east-1.amazonaws.com/dev/test",
-      {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      })
-
-      var json = await request.json();
-      console.log(json);
+      var _fetchSpells = await GetSpells();
+      console.log(_fetchSpells);
+      setSpell(_fetchSpells);
     }
 
     Test();
@@ -64,11 +57,40 @@ const App = () => {
     console.log(spells);
   }, [spells]);
 
+  const GetSpells = () => {
+    return new Promise(async (resolve) => {
+      let request =  await fetch("https://s6u6rjds0m.execute-api.us-east-1.amazonaws.com/dev/spells/getAll",
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
+    
+      let json = await request.json();
+      resolve(json)
+    });
+  }
+
   const addSpellDataHandler = (spell) => {
     console.log(spell);
-    setSpell(prevSpellData => {
-      return[spell, ...prevSpellData]
-    })
+
+    const addSpell = async () => {
+     var addSpellResult = await fetch("https://s6u6rjds0m.execute-api.us-east-1.amazonaws.com/dev/spells/add", 
+     {
+        method: 'POST',
+        body: JSON.stringify(spell),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+     });
+     var spells = await addSpellResult.json();
+     setSpell(spells);
+    //  setSpell(prevSpellData => {
+    //   return[spell, ...prevSpellData]
+    // })
+    }
+    addSpell();
   }
 
 
@@ -84,7 +106,7 @@ const App = () => {
             key={s.id}
             name={s.name}
             castingTime={s.castingTime}
-            range={s.range}
+            spell_range={s.spell_range}
             components={s.components}
             duration={s.duration}
             ></SpellItem>

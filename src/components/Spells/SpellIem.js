@@ -10,7 +10,7 @@ const SpellItem = (props) => {
         <tr>
                 <td className='SpellTH'>{props.name}</td>
                 <td>{props.castingTime}</td>
-                <td>{props.range}</td>
+                <td>{props.spell_range}</td>
                 <td>{props.components}</td>
                 <td>{props.duration}</td>
                 <td><button onClick={DeleteSpells}>Delete</button></td>

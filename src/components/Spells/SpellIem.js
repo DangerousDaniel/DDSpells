@@ -1,10 +1,28 @@
+import { useState } from "react"
+import Backdrop from "../Backdrop"
+import PopUpWindow from "../PopUpWindow"
+
 import './Spelltem.css'
 
-
-
 const SpellItem = (props) => {
-    const DeleteSpells = async (id) => {
 
+    const [modalIsOpen, setModalIsOpen] = useState(false)
+
+    //open pop when delete is open
+    const OpenPopUp = () => {
+       setModalIsOpen(true)
+    }
+
+    //if no
+    //close pop up
+    const closePopUp = () =>{
+        setModalIsOpen(false)
+    }
+
+    //if yes this
+    //then close pop up
+    const DeleteSpells = async () => {
+        let id = props.id;
         console.log(id);
     
         //delete from database
@@ -34,7 +52,10 @@ const SpellItem = (props) => {
                 <td>{props.spell_range}</td>
                 <td>{props.components}</td>
                 <td>{props.duration}</td>
-                <td><button onClick={()=> {DeleteSpells(props.id)}}>Delete</button></td>
+                <td><button onClick={OpenPopUp}>Delete</button></td>
+                {modalIsOpen ? <PopUpWindow onCancel={closePopUp} onConfirm={DeleteSpells}></PopUpWindow> : null}
+                {modalIsOpen ? <Backdrop onCancel={closePopUp}></Backdrop> : null}
+
         </tr>
     );
 }

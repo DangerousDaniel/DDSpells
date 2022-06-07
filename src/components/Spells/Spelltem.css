@@ -12,3 +12,16 @@ tr {
     text-align: center;
     border: 3px solid black;
 }
+
+  
+span {
+visibility: hidden;
+background-color: grey;
+color: white;
+padding: 10px;
+}
+
+.tooltip:hover span {
+visibility: visible;
+opacity: 1;
+}

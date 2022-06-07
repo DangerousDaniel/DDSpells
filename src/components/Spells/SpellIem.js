@@ -1,5 +1,6 @@
 import { useState } from "react"
 import Backdrop from "../Backdrop"
+import DescriptionToolTip from "../DescriptionTooltip"
 import PopUpWindow from "../PopUpWindow"
 
 import './Spelltem.css'
@@ -43,20 +44,26 @@ const SpellItem = (props) => {
         } else {
             alert("Table Needs to Update")
         }
+
+        closePopUp()
     }
 
     return(
-        <tr>
-                <td className='SpellTH'>{props.name}</td>
-                <td>{props.castingTime}</td>
-                <td>{props.spell_range}</td>
-                <td>{props.components}</td>
-                <td>{props.duration}</td>
-                <td><button onClick={OpenPopUp}>Delete</button></td>
-                {modalIsOpen ? <PopUpWindow onCancel={closePopUp} onConfirm={DeleteSpells}></PopUpWindow> : null}
-                {modalIsOpen ? <Backdrop onCancel={closePopUp}></Backdrop> : null}
-
-        </tr>
+        <>
+            <tr className="tooltip">
+                    <td className='SpellTH'>{props.name}</td>
+                    <td>{props.castingTime}</td>
+                    <td>{props.spell_range}</td>
+                    <td>{props.components}</td>
+                    <td>{props.duration}</td>
+                    <td><button onClick={OpenPopUp}>Delete</button></td>
+                    {modalIsOpen ? <PopUpWindow onCancel={closePopUp} onConfirm={DeleteSpells}></PopUpWindow> : null}
+                    {modalIsOpen ? <Backdrop onCancel={closePopUp}></Backdrop> : null}
+            </tr>
+            <div>
+                <DescriptionToolTip spellId={props.id}> </DescriptionToolTip>
+            </div>
+        </>
     );
 }
 

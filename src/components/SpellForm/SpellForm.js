@@ -65,7 +65,7 @@ const SpellForm = (props) => {
             spell_range: UserInputRange,
             components: UserInputComponents,
             duration: UserInputDuration,
-            description: UserInputDescription
+            descrption: UserInputDescription
         }
 
         //Save Data

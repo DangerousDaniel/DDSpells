@@ -13,15 +13,18 @@ tr {
     border: 3px solid black;
 }
 
-  
-span {
+.tooltip {
+    padding: 3px;
+}
+
+.tooltip .tooltiptext {
 visibility: hidden;
 background-color: grey;
 color: white;
 padding: 10px;
 }
 
-.tooltip:hover span {
+.tooltip:hover .tooltiptext {
 visibility: visible;
 opacity: 1;
 }

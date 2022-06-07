@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { useEffect } from "react/cjs/react.production.min"
 import Backdrop from "../Backdrop"
 import DescriptionToolTip from "../DescriptionTooltip"
 import PopUpWindow from "../PopUpWindow"
@@ -22,7 +23,7 @@ const SpellItem = (props) => {
 
     //if yes this
     //then close pop up
-    const DeleteSpells = async () => {
+    const DeleteSpells = async (event) => {
         let id = props.id;
         console.log(id);
     
@@ -44,8 +45,7 @@ const SpellItem = (props) => {
         } else {
             alert("Table Needs to Update")
         }
-
-        closePopUp()
+        
     }
 
     return(
@@ -59,10 +59,8 @@ const SpellItem = (props) => {
                     <td><button onClick={OpenPopUp}>Delete</button></td>
                     {modalIsOpen ? <PopUpWindow onCancel={closePopUp} onConfirm={DeleteSpells}></PopUpWindow> : null}
                     {modalIsOpen ? <Backdrop onCancel={closePopUp}></Backdrop> : null}
+                    <DescriptionToolTip spellId={props.id}> </DescriptionToolTip>
             </tr>
-            <div>
-                <DescriptionToolTip spellId={props.id}> </DescriptionToolTip>
-            </div>
         </>
     );
 }

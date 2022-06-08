@@ -45,6 +45,9 @@ const SpellItem = (props) => {
         } else {
             alert("Table Needs to Update")
         }
+
+        closePopUp()
+        
         
     }
 
